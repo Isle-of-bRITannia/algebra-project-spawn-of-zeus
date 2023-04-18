@@ -42,8 +42,8 @@ const API = {
     MakePercipitation: (percip) => Alg.Percip(percip, Alg.Basic),
     MakeLightning: (light) => Alg.Lightning(light, Alg.Basic),
     GenerateSnow: () => pipe(Alg.Cloud('overcast', Alg.Basic), Alg.Percip('snowing',Alg.Basic)),
-    GenerateRain: () => pipe(Alg.Cloud('overcast', Alg.Basic) , Alg.Percip('rain', Alg.Basic))
-    
+    GenerateRain: () => pipe(Alg.Cloud('overcast', Alg.Basic) , Alg.Percip('rain', Alg.Basic)),
+    GenerateTornade: () => pipe(Alg.Cloud('overcast', Alg.Basic), Alg.Wind('twisty', Alg.Basic))
 };
 
 export{
