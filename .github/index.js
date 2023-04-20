@@ -38,7 +38,7 @@ const Alg = {
 const API = {
     CreateCustomWeather: (cloud, percipitation, windSpeed, lightning) => pipeRoutes(Alg.Section(cloud, percipitation), pipeRoutes(Alg.Section(percipitation, windSpeed), Alg.Section(windSpeed, lightning))),
     //CreateInsaneWeather: ()
-    //CreateTornado: () => pipeRoutes(GenerateHighWind(), ConnectorHail()),
+    CreateTornado: () => pipe(GenerateHighWind(), ConnectorHail()),
     GenerateSnow: () => Alg.Section('Snow', 'Overcast'),
     GenerateRain: () => Alg.Section('Rain', 'Overcast'),
     GenerateLightning: () => Alg.Section('Lighnting', 'Overcast'),

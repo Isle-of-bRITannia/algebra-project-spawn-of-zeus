@@ -8,3 +8,4 @@ console.log(weather.CreateCustomWeather('overcast','raining downpour', 'high win
 console.log(weather.GenerateSnow())
 console.log(weather.CreateSnowStorm())
 //debugger;
+console.log(weather.CreateTornado())
