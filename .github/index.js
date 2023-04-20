@@ -11,6 +11,11 @@ const Alg = {
         weather: weather,
         weather1: []
     }),
+    pipeWeather: (partA, partB) => ({
+          part: partA.part,
+          weather1: [...partA.weather1, partA.weather, ...partB.weather1],
+          weather: partB.weather,
+    }),
     // Percip: (part, weather) => ({
     //     percipatation: part,
     //     weather
@@ -51,7 +56,7 @@ const API = {
     ConnectorHail: () => Alg.Section('Overcast', 'Hail'), 
     ConnectorHighWind: () => Alg.Section('Overcast', 'High Winds'),
     ConnectorLowWind: () => Alg.Section('Overcast', 'Low Wind'),
-    CreateSnowStorm: () => pipeRoutes(Alg.Section('Snow', 'Overcast'), Alg.Section('Overcast', 'High Winds'))
+    CreateSnowStorm: () => Alg.pipeWeather(Alg.Section('Snow', 'Overcast'), Alg.Section('Overcast', 'High Winds'))
     //CreateSnowStorm: () => pipeRoutes(GenerateSnow(), ConnectorHighWind())
 };
 
