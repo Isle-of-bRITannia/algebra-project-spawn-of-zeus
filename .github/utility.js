@@ -6,8 +6,8 @@ const pipeRoutes = (routeA, routeB) => {
   
     return {
       part: routeA.part,
+      weather1: [...routeA.weather1, routeA.weather, ...routeB.weather1],
       weather: routeB.weather,
-      weather1: [...routeA.weather1, routeA.weather, ...routeB.weather1]
     }
   };
 

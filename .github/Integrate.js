@@ -3,9 +3,8 @@ import {weather} from './index.js'
 
 const area = document.querySelector('#app');
 
+
+console.log(weather.CreateCustomWeather('overcast','raining downpour', 'high winds', 'constant'))
+console.log(weather.GenerateSnow())
+console.log(weather.CreateSnowStorm())
 //debugger;
-console.log(weather.GenerateCustomWeather('overcast','raining downpour', 'high winds', 'constant'))
-// console.log(weather.GenerateRain)
-// console.log(weather.GenerateSnow)
-// console.log(weather.GenerateTornade)
-// console.log(weather.MakePercipitation('rain'))

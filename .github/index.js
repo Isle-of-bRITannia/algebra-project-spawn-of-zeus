@@ -36,13 +36,23 @@ const Alg = {
 };
 
 const API = {
-    GenerateCustomWeather: (cloud, percipitation, windSpeed, lightning) => pipeRoutes(Alg.Section(cloud, percipitation), pipeRoutes(Alg.Section(percipitation, windSpeed), Alg.Section(windSpeed, lightning))),
-    //GenerateStorm: (cloud, percip, wind, lightning) => (pipe(Alg.Section(cloud, percip), Alg.Section(percip, wind), Alg.Section(wind, lightning))),
-    //GenerateStorm: pipe(Alg.Percip('downpour', Alg.Basic), Alg.Cloud('overcast', Alg.Basic), Alg.Wind('high winds', Alg.Basic), Alg.Lightning('constant', Alg.Basic)),
-    //GenerateInsaneWeather: ()
-    // GenerateSnow: () => pipeRoutes(Alg.Section('overcast', ), ),
-    // GenerateRain: () => pipe(Alg.Cloud('overcast', Alg.Basic) , Alg.Percip('rain', Alg.Basic)),
-    // GenerateTornade: () => pipe(Alg.Cloud('overcast', Alg.Basic), Alg.Wind('twisty', Alg.Basic))
+    CreateCustomWeather: (cloud, percipitation, windSpeed, lightning) => pipeRoutes(Alg.Section(cloud, percipitation), pipeRoutes(Alg.Section(percipitation, windSpeed), Alg.Section(windSpeed, lightning))),
+    //CreateInsaneWeather: ()
+    //CreateTornado: () => pipeRoutes(GenerateHighWind(), ConnectorHail()),
+    GenerateSnow: () => Alg.Section('Snow', 'Overcast'),
+    GenerateRain: () => Alg.Section('Rain', 'Overcast'),
+    GenerateLightning: () => Alg.Section('Lighnting', 'Overcast'),
+    GenerateHail: () => Alg.Section('Hail', 'Overcast'),
+    GenerateHighWind: () => Alg.Section('High Winds', 'Overcast'),
+    GenerateLowWind: () => Alg.Section('Low Wind', 'Overcast'),
+    ConnectorSnow: () => Alg.Section('Overcast', 'Snow'),
+    ConnectorRain: () => Alg.Section('Overcast', 'Rain'),
+    ConnectorLightning: () => Alg.Section('Overcast', 'Lightning'), 
+    ConnectorHail: () => Alg.Section('Overcast', 'Hail'), 
+    ConnectorHighWind: () => Alg.Section('Overcast', 'High Winds'),
+    ConnectorLowWind: () => Alg.Section('Overcast', 'Low Wind'),
+    CreateSnowStorm: () => pipeRoutes(Alg.Section('Snow', 'Overcast'), Alg.Section('Overcast', 'High Winds'))
+    //CreateSnowStorm: () => pipeRoutes(GenerateSnow(), ConnectorHighWind())
 };
 
 export{
