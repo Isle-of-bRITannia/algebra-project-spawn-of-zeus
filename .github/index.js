@@ -42,7 +42,7 @@ import {Alg} from './Algebra.js'
 // };
 
 const API = {
-    CreateCustomWeather: (cloud, percipitation, windSpeed, lightning) => pipeRoutes(Alg.Section(cloud, percipitation), pipeRoutes(Alg.Section(percipitation, windSpeed), Alg.Section(windSpeed, lightning))),
+    CreateCustomWeather: (cloud, percipitation, windSpeed, lightning) => Alg.pipeWeather(Alg.Section(cloud, percipitation), Alg.pipeWeather(Alg.Section(percipitation, windSpeed), Alg.Section(windSpeed, lightning))),
     //CreateInsaneWeather: ()
     CreateTornado: () => pipe(GenerateHighWind(), ConnectorHail()),
     GenerateSnow: () => Alg.Section('Snow', 'Overcast'),
