@@ -1,66 +1,12 @@
 import {pipe, pipeRoutes} from './utility.js'
 import {Alg} from './Algebra.js'
 
-// const Alg = {
-//     Basic: () => ({
-//        part: '',
-//        weather: '',
-//        weather1: []
-//     }),
-//     Section: (part, weather) => ({
-//         part: part,
-//         weather: weather,
-//         weather1: []
-//     }),
-//     pipeWeather: (partA, partB) => ({
-//           part: partA.part,
-//           weather1: [...partA.weather1, partA.weather, ...partB.weather1],
-//           weather: partB.weather,
-//     }),
-//     // Percip: (part, weather) => ({
-//     //     percipatation: part,
-//     //     weather
-//     // }),
-//     // Cloud: (part, weather) => ({
-//     //     clouds: part,
-//     //     weather
-//     // }),
-//     // Wind: (part, weather) => ({
-//     //     wind: part,
-//     //     weather
-//     // }),
-//     // Lightning: (part, weather) => ({
-//     //     lightning: part,
-//     //     weather
-//     // }),
-//     Geolocation: (weather1, weather2) => ({
-        
-//     }),
-//     TimeRange: (weather1, weather2) => ({
-
-//     })
-// };
 
 const API = {
-    CreateCustomWeather: (cloud, percipitation, windSpeed, lightning) => Alg.pipeWeather(Alg.Section(cloud, percipitation), Alg.pipeWeather(Alg.Section(percipitation, windSpeed), Alg.Section(windSpeed, lightning))),
-    //CreateInsaneWeather: ()
-    CreateTornado: () => pipe(GenerateHighWind(), ConnectorHail()),
-    GenerateSnow: () => Alg.Section('Snow', 'Overcast'),
-    GenerateRain: () => Alg.Section('Rain', 'Overcast'),
-    GenerateLightning: () => Alg.Section('Lighnting', 'Overcast'),
-    GenerateHail: () => Alg.Section('Hail', 'Overcast'),
-    GenerateHighWind: () => Alg.Section('High Winds', 'Overcast'),
-    GenerateLowWind: () => Alg.Section('Low Wind', 'Overcast'),
-    ConnectorSnow: () => Alg.Section('Overcast', 'Snow'),
-    ConnectorRain: () => Alg.Section('Overcast', 'Rain'),
-    ConnectorLightning: () => Alg.Section('Overcast', 'Lightning'), 
-    ConnectorHail: () => Alg.Section('Overcast', 'Hail'), 
-    ConnectorHighWind: () => Alg.Section('Overcast', 'High Winds'),
-    ConnectorLowWind: () => Alg.Section('Overcast', 'Low Wind'),
+    CreateWeather: (cloud, precipitation, windSpeed, lightning) => Alg.Section('clouds', cloud, Alg.Section('precipitation', precipitation, Alg.Section('windSpeed', windSpeed, Alg.Section('lightning', lightning, Alg.Basic())))),
+    CreateWeatherLineup: (weather1, weather2) => Alg.TimeRange(weather1, weather2),
     CreateSnowStorm: () => Alg.pipeWeather(Alg.Section('Snow', 'Overcast'), Alg.Section('Overcast', 'High Winds'))
-    //CreateSnowStorm: () => pipeRoutes(GenerateSnow(), ConnectorHighWind())
-};
-
+}
 export{
     API as weather
 }
